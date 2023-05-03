@@ -1,3 +1,29 @@
+/***************************************************************
+* Name : FinalProjectEllison.cpp -> ListBeaders.cpp
+* Author: Lily Ellison
+* Created : 03/26/2023
+* Course: CIS 152 - Data Structure
+* Version: 1.0
+* OS: Windows 10 Home
+* IDE: Visual Studio 2019
+* Copyright : This is my own original work
+* based onspecifications issued by our instructor
+* Description : ListBeaders in FinalProjectEllison:
+*				An app that searches for appropriate courses and
+*               registers users when conditions are met.
+*            Input: User information: name, skill level
+*                   and budget
+*                   Course information: title, cost, skill level,
+*                   max and current capacity
+*            Ouput: User information, course information, any errors,
+*                   successful registration messages
+* Academic Honesty: I attest that this is my original work.
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+
+
 #include "ListBeaders.h"
 #include "notFoundException.h"
 #include "emptyListException.h"
@@ -5,6 +31,7 @@
 #include <iostream>
 using namespace std;
 
+//Remove a node from the linked list - this is based off BeaderID, which I ended up not using. Not sure if this would work now
 void ListBeaders::deleteBeader(int BeaderID) {
 	if (!isEmpty()) {
 		LBNode* temp1 = head, * temp2 = NULL;
@@ -38,6 +65,7 @@ void ListBeaders::deleteBeader(int BeaderID) {
 	}
 }
 
+//adds beader to linked list
 void ListBeaders::insertBeader(Beader newBeader) {
 	LBNode* newNode = new LBNode(newBeader);
 
@@ -52,6 +80,7 @@ void ListBeaders::insertBeader(Beader newBeader) {
 	temp->next = newNode;
 }
 
+//prints a list of beaders
 void ListBeaders::printList() {
 	LBNode* temp = head;
 	if (head == NULL) {
@@ -65,6 +94,7 @@ void ListBeaders::printList() {
 	}
 }
 
+//checks if list is empty
 bool ListBeaders::isEmpty() {
 	if (head == NULL) {
 		return true;
@@ -74,6 +104,7 @@ bool ListBeaders::isEmpty() {
 	}
 }
 
+//finds how many beaders in list
 int ListBeaders::findSize() {
 	int size = 0;
 	LBNode* temp = head;
@@ -87,6 +118,7 @@ int ListBeaders::findSize() {
 	return size;
 }
 
+//sort by name:
 void ListBeaders::sortByName(LBNode** head) {
 	LBNode* prev = (*head);
 	LBNode* curr = (*head)->next;

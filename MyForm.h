@@ -1,3 +1,33 @@
+/***************************************************************
+* Name : MyForm.h
+* Author: Lily Ellison
+* Created : 03/26/2023
+* Course: CIS 152 - Data Structure
+* Version: 1.0
+* OS: Windows 10 Home
+* IDE: Visual Studio 2019
+* Copyright : This is my own original work
+* based onspecifications issued by our instructor
+* Description : Attmpted GUI for FinalProjectEllison:
+*				This holds the code for the GUI
+*				From the tutorial the instructor recommended.
+*				I got the calculator to work, but could not
+*				modify it for my purposes.
+*				An app that searches for appropriate courses and
+*               registers users when conditions are met.
+*				Unfinished
+*            Input: User information: name, skill level
+*                   and budget
+*                   Course information: title, cost, skill level,
+*                   max and current capacity
+*            Ouput: User information, course information, any errors,
+*                   successful registration messages
+* Academic Honesty: I attest that this is my original work.
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+
 #pragma once
 #include "../../FinalProjectEllison/Beader.h"
 #include "../../FinalProjectEllison/Course.h"
@@ -35,6 +65,11 @@ namespace FPGUI {
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ exitToolStripMenuItem;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ searchClassesToolStripMenuItem;
 		   
 
@@ -96,6 +131,8 @@ namespace FPGUI {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->searchClassesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -118,7 +155,6 @@ namespace FPGUI {
 			this->label1->Size = System::Drawing::Size(118, 38);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Name:";
-			
 			// 
 			// label2
 			// 
@@ -247,22 +283,38 @@ namespace FPGUI {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(534, 28);
+			this->menuStrip1->Size = System::Drawing::Size(668, 38);
 			this->menuStrip1->TabIndex = 27;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// exitToolStripMenuItem
 			// 
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
-			this->exitToolStripMenuItem->Size = System::Drawing::Size(47, 24);
+			this->exitToolStripMenuItem->Size = System::Drawing::Size(47, 34);
 			this->exitToolStripMenuItem->Text = L"Exit";
 			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exitToolStripMenuItem_Click);
 			// 
 			// searchClassesToolStripMenuItem
 			// 
 			this->searchClassesToolStripMenuItem->Name = L"searchClassesToolStripMenuItem";
-			this->searchClassesToolStripMenuItem->Size = System::Drawing::Size(118, 24);
+			this->searchClassesToolStripMenuItem->Size = System::Drawing::Size(118, 34);
 			this->searchClassesToolStripMenuItem->Text = L"Search Classes";
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Location = System::Drawing::Point(260, 128);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(198, 118);
+			this->groupBox1->TabIndex = 28;
+			this->groupBox1->TabStop = false;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Location = System::Drawing::Point(173, 87);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(304, 33);
+			this->groupBox2->TabIndex = 29;
+			this->groupBox2->TabStop = false;
 			// 
 			// MyForm
 			// 
@@ -281,9 +333,11 @@ namespace FPGUI {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->groupBox2);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Beader Registration";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -291,11 +345,6 @@ namespace FPGUI {
 
 		}
 #pragma endregion
-/*
-int output = System::Convert::ToInt16(textBox1->Text) - System::Convert::ToInt16(textBox2->Text);
-
-label2->Text = System::Convert::ToString(output);
-*/
 
 private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	budget = 50;
@@ -304,38 +353,53 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	budget = 100;
 }
+
 private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	budget = 150;
 }
+
 private: System::Void radioButton4_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	skill = 1;
 }
+
 private: System::Void radioButton5_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	skill = 2;
 }
+
 private: System::Void radioButton6_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	skill = 3;
 }
+
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 	char cStr[50] = { 0 };
 	String^ inputName = (textBox2->Text);
+	string name = toStandardString(inputName); //could not get string input to work
+	/*
 	if (inputName->Length < sizeof(cStr)) {
 		sprintf(cStr, "%s", inputName);
 	}
 	std::string name(cStr);
-
+	*/
 	Beader thisBeader = Beader(name, budget, skill);
-
-
-	/*
-int output = System::Convert::ToInt16(textBox1->Text) - System::Convert::ToInt16(textBox2->Text);
-
-label2->Text = System::Convert::ToString(output);
-*/
-
 }
+
+	   static string toStandardString(System::String^ string) {
+		   using System::Runtime::InteropServices::Marshal;  //could not get string input to work
+		   if (string->Length <= 0) {
+			   MessageBox::Show("Please enter a name");
+		   }
+		   System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
+		   char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
+		   std::string returnString(charPointer, string->Length);
+		   Marshal::FreeHGlobal(pointer);
+
+		   return returnString;
+}
+
 private: System::Void exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	Close();
 }
+
+	   //MyForm.h[Design] shows the GUI as coded here. I don't understand a lot of this code. Learned from a tutorial
 };
 }

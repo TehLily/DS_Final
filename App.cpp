@@ -1,5 +1,5 @@
 /***************************************************************
-* Name : FinalProjectEllison.cpp -> Beader.cpp
+* Name : App.cpp
 * Author: Lily Ellison
 * Created : 03/26/2023
 * Course: CIS 152 - Data Structure
@@ -8,9 +8,11 @@
 * IDE: Visual Studio 2019
 * Copyright : This is my own original work
 * based onspecifications issued by our instructor
-* Description : Beader class in FinalProjectEllison:
+* Description : Attmpted GUI for FinalProjectEllison:
+*				This creates the window
 *				An app that searches for appropriate courses and
 *               registers users when conditions are met.
+*				Unfinished
 *            Input: User information: name, skill level
 *                   and budget
 *                   Course information: title, cost, skill level,
@@ -23,40 +25,17 @@
 * to my program.
 ***************************************************************/
 
-#include "Beader.h"
-#include <iostream>
-using namespace std;
-//constructor
-Beader::Beader() {
+#include "App.h"
+#include "MainFrame.h"
+#include <wx/wx.h>
 
-}
+wxIMPLEMENT_APP(App);
 
-Beader::Beader(std::string n, int b, int bs) {
-	Beader::setName(n);
-	Beader::setBudget(b);
-	Beader::setBSkill(bs);
-}
-void Beader::setName(string n) {
-	name = n;
-}
-string Beader::getName() {
-	return name;
-}
-void Beader::setBSkill(int bs) {
-	bskill = bs;
-}
-int Beader::getBSkill() {
-	return bskill;
-}
-void Beader::setBudget(int b) {
-	budget = b;
-}
-int Beader::getBudget() {
-	return budget;
-}
-//adjusts budget after beader registers for a course
-void Beader::subBudget(int courseCost) {
-	Beader::budget -= courseCost;
-	Beader::setBudget(budget);
+bool App::OnInit() {
+	MainFrame* mainFrame = new MainFrame("Beader Registration");
+	mainFrame->SetClientSize(600, 500); //sets size of window
+	mainFrame->Center(); //tells it where to appear
+	mainFrame->Show();
+	return true;
 }
 

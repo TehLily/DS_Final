@@ -1,5 +1,5 @@
 /***************************************************************
-* Name : FinalProjectEllison.cpp -> Beader.cpp
+* Name : MainFrame.h
 * Author: Lily Ellison
 * Created : 03/26/2023
 * Course: CIS 152 - Data Structure
@@ -8,9 +8,10 @@
 * IDE: Visual Studio 2019
 * Copyright : This is my own original work
 * based onspecifications issued by our instructor
-* Description : Beader class in FinalProjectEllison:
+* Description : Attmpted GUI for FinalProjectEllison:
 *				An app that searches for appropriate courses and
 *               registers users when conditions are met.
+*				Unfinished
 *            Input: User information: name, skill level
 *                   and budget
 *                   Course information: title, cost, skill level,
@@ -23,40 +24,19 @@
 * to my program.
 ***************************************************************/
 
-#include "Beader.h"
-#include <iostream>
-using namespace std;
-//constructor
-Beader::Beader() {
+#pragma once
+#include <wx/wx.h>
 
-}
+class MainFrame : public wxFrame {
+public:
+	MainFrame(const wxString& title);
+	std::string name = "";
+	int skillValue;
+	int budgetAmt;
 
-Beader::Beader(std::string n, int b, int bs) {
-	Beader::setName(n);
-	Beader::setBudget(b);
-	Beader::setBSkill(bs);
-}
-void Beader::setName(string n) {
-	name = n;
-}
-string Beader::getName() {
-	return name;
-}
-void Beader::setBSkill(int bs) {
-	bskill = bs;
-}
-int Beader::getBSkill() {
-	return bskill;
-}
-void Beader::setBudget(int b) {
-	budget = b;
-}
-int Beader::getBudget() {
-	return budget;
-}
-//adjusts budget after beader registers for a course
-void Beader::subBudget(int courseCost) {
-	Beader::budget -= courseCost;
-	Beader::setBudget(budget);
-}
+private:
+	void OnRegButtonClick(wxCommandEvent& evt);
+	void OnExitButtonClick(wxCommandEvent& evt);
+	
+};
 
